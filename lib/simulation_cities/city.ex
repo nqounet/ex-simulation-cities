@@ -18,8 +18,8 @@ defmodule SimulationCities.City do
   ]
 
   @type t :: %__MODULE__{
-          x: pos_integer(),
-          y: pos_integer(),
+          x: 1..999,
+          y: 1..999,
           population: non_neg_integer(),
           agricultural_level: non_neg_integer(),
           industrial_level: non_neg_integer(),
@@ -66,7 +66,7 @@ defmodule SimulationCities.City do
       {:error, "y coordinate must be between 1 and 999"}
 
   """
-  @spec new(pos_integer(), pos_integer(), keyword()) :: {:ok, t()} | {:error, String.t()}
+  @spec new(integer(), integer(), keyword()) :: {:ok, t()} | {:error, String.t()}
   def new(x, y, opts \\ []) do
     with :ok <- validate_coordinate(x, :x),
          :ok <- validate_coordinate(y, :y) do
